@@ -1,7 +1,10 @@
 <?php
 
-namespace Wikimedia\Api;
+namespace Addwiki\Wikimedia\Api;
 
+use Addwiki\Mediawiki\Api\Client\MediawikiApi;
+use Addwiki\Mediawiki\Api\MediawikiFactory;
+use Addwiki\Wikibase\Api\WikibaseFactory;
 use DataValues\BooleanValue;
 use DataValues\Deserializers\DataValueDeserializer;
 use DataValues\Geo\Values\GlobeCoordinateValue;
@@ -13,9 +16,6 @@ use DataValues\Serializers\DataValueSerializer;
 use DataValues\StringValue;
 use DataValues\TimeValue;
 use DataValues\UnknownValue;
-use Mediawiki\Api\MediawikiApi;
-use Mediawiki\Api\MediawikiFactory;
-use Wikibase\Api\WikibaseFactory;
 use Wikibase\DataModel\Entity\EntityIdValue;
 
 /**
@@ -25,11 +25,10 @@ use Wikibase\DataModel\Entity\EntityIdValue;
 class WikimediaFactory {
 
 	/**
-	 * @since 0.1
-	 *
 	 * @param string $domain eg. 'en.wikipedia.org'
 	 *
 	 * @return MediawikiApi
+	 * @since 0.1
 	 */
 	public function newMediawikiApiForDomain( $domain ) {
 		return MediawikiApi::newFromApiEndpoint( 'https://' . $domain . '/w/api.php' );
